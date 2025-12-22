@@ -16,14 +16,14 @@ export default function Header() {
                 </div>
 
                 <div className="w-1/4 h-full flex justify-between items-center ">
-                    <Link href={"/"} className="font-semibold hover:text-primary transition-colors duration-200">Catalog</Link>
-                    <Link href={"/"} className="font-semibold hover:text-primary transition-colors duration-200">About</Link>
-                    <Link href={"/"} className="font-semibold hover:text-primary transition-colors duration-200">Blog</Link>
+                    <Link href={"/catalog"} className="font-semibold hover:text-primary transition-colors duration-200">Catalog</Link>
+                    <Link href={"/about"} className="font-semibold hover:text-primary transition-colors duration-200">About</Link>
+                    <Link href={"/blog"} className="font-semibold hover:text-primary transition-colors duration-200">Blog</Link>
                 </div>
 
                 <div className="hidden md:flex flex-1 max-w-md relative bg-white">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Buscar produtos..." className="pl-10 focus-visible:ring-1 focus-visible:ring-4"/>
+                    <Input placeholder="Search for produtos..." className="pl-10 focus-visible:ring-1 focus-visible:ring-4"/>
                 </div>
 
                 <div className="flex justify-around w-55">
