@@ -1,6 +1,6 @@
 "use client";
 
-import CatalogMenu from "@/components/ui/catalog-menu";
+import CatalogMenu from "@/components/catalog-menu";
 
 export default function page() {
 

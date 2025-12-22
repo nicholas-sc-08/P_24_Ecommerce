@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "./button";
-import { Card, CardHeader, CardTitle } from "./card";
+import { Button } from "./ui/button";
+import { Card, CardHeader, CardTitle } from "./ui/card";
 
 export default function CatalogMenu() {
 

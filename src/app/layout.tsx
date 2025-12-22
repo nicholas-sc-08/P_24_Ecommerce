@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
-import Header from "@/components/ui/header";
+import Header from "@/components/header";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,12 +25,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
-      >
-        <Header/>
-        {children}
+<html lang="pt-br" suppressHydrationWarning>
+      <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
+        <ThemeProvider>
+          <Header/>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

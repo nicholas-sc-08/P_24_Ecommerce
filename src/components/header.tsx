@@ -2,6 +2,7 @@ import { Search, ShoppingCart, User } from "lucide-react"; // npm install lucide
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import ModeToggle from "./theme-button";
 
 export default function Header() {
     return (
@@ -25,9 +26,10 @@ export default function Header() {
                     <Input placeholder="Buscar produtos..." className="pl-10 focus-visible:ring-1 focus-visible:ring-4"/>
                 </div>
 
-                <div className="flex justify-evenly w-45">
-                    <Button variant="secondary" className="cursor-pointer"><ShoppingCart/> Cart (0)</Button>
-                    <Button variant="secondary" className="cursor-pointer"><User/></Button>
+                <div className="flex justify-around w-55">
+                    <Button variant="default" className="cursor-pointer"><ShoppingCart/> Cart (0)</Button>
+                    <ModeToggle/>
+                    <Button variant="outline" className="cursor-pointer"><User/></Button>
                 </div>
 
             </div>
