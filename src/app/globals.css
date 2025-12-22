@@ -6,6 +6,8 @@
 :root {
   --background: oklch(0.98 0 0);
   --foreground: oklch(0.28 0.04 260.33);
+  --product: #F0EEED;
+  --product-foreground: oklch(0.28 0.04 260.33);
   --card: oklch(1.00 0 0);
   --card-foreground: oklch(0.28 0.04 260.33);
   --popover: oklch(1.00 0 0);
@@ -56,6 +58,8 @@
 .dark {
   --background: oklch(0.21 0.04 264.04);
   --foreground: oklch(0.93 0.01 256.71);
+  --product: oklch(0.28 0.04 260.33);
+  --product-foreground: oklch(0.93 0.01 256.71);
   --card: oklch(0.28 0.04 260.33);
   --card-foreground: oklch(0.93 0.01 256.71);
   --popover: oklch(0.28 0.04 260.33);
@@ -99,6 +103,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-product: var(--product);
+  --color-product-foreground: var(--product-foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -152,6 +158,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     letter-spacing: var(--tracking-normal);

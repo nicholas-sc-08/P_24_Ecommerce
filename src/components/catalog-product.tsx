@@ -7,7 +7,7 @@ export default function CatalogProduct() {
 
     return (
         <div className="rounded-2xl cursor-pointer flex flex-col justify-evenly items-center w-70 h-85 hover:bg-accent transition duration-300">
-            <Card className="bg-product-foreground w-60 h-60 flex items-center justify-center rounded-2xl">
+            <Card className="bg-product w-60 h-60 flex items-center justify-center rounded-2xl">
                 <img className="w-full h-full" src="./image 10.svg" />
             </Card>
             <div className="w-60">
