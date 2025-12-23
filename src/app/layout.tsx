@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { GlobalProvider } from "@/context/GlobalContext";
 import "./globals.css";
 import Header from "@/components/header";
 
@@ -25,11 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<html lang="pt-br" suppressHydrationWarning>
+    <html lang="pt-br" suppressHydrationWarning>
       <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider>
-          <Header/>
-          {children}
+          <GlobalProvider>
+            <Header />
+            {children}
+          </GlobalProvider>
         </ThemeProvider>
       </body>
     </html>
