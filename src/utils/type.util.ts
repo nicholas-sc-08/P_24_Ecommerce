@@ -5,8 +5,10 @@ export type GlobalContextType = {
     setIsModalOpen: (value: boolean) => void;
 };
 
-export type ModalInfoProps = {
+export type ModalMessageInfo = {
 
     modalType: ModalType;
+    text: string;
+    border: string;
     phrase: string;
 };

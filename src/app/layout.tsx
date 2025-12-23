@@ -3,7 +3,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GlobalProvider } from "@/context/GlobalContext";
 import "./globals.css";
-import Header from "@/components/header";
+import { HeaderWrapper } from "@/components/headerWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,22 +15,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+
 export const metadata: Metadata = {
   title: "Meu E-commerce",
   description: "A melhor experiência de compra",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
+
   return (
     <html lang="pt-br" suppressHydrationWarning>
       <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider>
+          <HeaderWrapper/>
           <GlobalProvider>
-            <Header />
             {children}
           </GlobalProvider>
         </ThemeProvider>

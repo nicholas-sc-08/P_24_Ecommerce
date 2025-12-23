@@ -21,7 +21,7 @@ export default function Header() {
                     <Link href={"/blog"} className="font-semibold hover:text-primary transition-colors duration-200">Blog</Link>
                 </div>
 
-                <div className="hidden md:flex flex-1 max-w-md relative bg-white">
+                <div className="hidden md:flex flex-1 max-w-md relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     <Input placeholder="Search for produtos..." className="pl-10 focus-visible:ring-1 focus-visible:ring-4"/>
                 </div>

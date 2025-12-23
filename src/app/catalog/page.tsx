@@ -1,7 +1,7 @@
 "use client";
 
-import CatalogMenu from "@/components/catalog-menu";
-import CatalogProduct from "@/components/catalog-product";
+import CatalogMenu from "@/components/CatalogMenu";
+import CatalogProduct from "@/components/CatalogProduct";
 import PaginationSection from "@/components/pagination";
 
 export default function page() {

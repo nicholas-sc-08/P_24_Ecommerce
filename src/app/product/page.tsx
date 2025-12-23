@@ -6,21 +6,23 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Check, Minus, Plus, ShoppingCart } from "lucide-react";
-import { ModalInfo } from "@/components/modalInfo";
+import { ModalMessage } from "@/components/ModalMessage";
 import { useGlobal } from "@/context/GlobalContext";
 import { ModalType } from "@/utils/enum.util";
-import { ModalInfoProps } from "@/utils/type.util";
+import { ModalMessageInfo } from "@/utils/type.util";
+import { modalTheme } from "@/utils/modal-theme";
 
 export default function page() {
 
     const [images, setImages] = useState(["./image 10.svg", "./image 9.svg", "./image 7.svg"]);
-    const [productImage, setProductImage] = useState(0)
-    const [modalProps, setModalProps] = useState<ModalInfoProps>({phrase: "All set! The product has been added to your cart.", modalType: ModalType.WARNING});
-    const {isModalOpen, setIsModalOpen } = useGlobal();
+    const [productImage, setProductImage] = useState(0);
+    const [modalProps, setModalProps] = useState<ModalMessageInfo>({ border: modalTheme.success.border, text: modalTheme.success.text, phrase: "All set! The product has been added to your cart.", modalType: ModalType.SUCCESS });
+    const { isModalOpen, setIsModalOpen } = useGlobal();
+    const [counter, setCounter] = useState(1);
 
     return (
         <div className="w-full h-165 flex justify-between">
-            {isModalOpen && <ModalInfo phrase={modalProps.phrase} modalType={modalProps.modalType}/>}
+            {isModalOpen && <ModalMessage border={modalProps.border} text={modalProps.text} phrase={modalProps.phrase} modalType={modalProps.modalType} />}
             <aside className="w-140 flex justify-start items-center">
                 <div className="flex flex-col cursor-pointer justify-around items-end w-50 h-100 pr-3">
                     {images.map((_, i) => (
@@ -60,14 +62,14 @@ export default function page() {
                         <Button variant="secondary" className="cursor-pointer hover:bg-chart-1 text-accent-foreground">X-Large</Button>
                     </div>
                 </div>
-                    <div className="flex justify-between items-center h-10 w-100">
-                        <div className="w-30 h-10 border-secondary border-2 rounded-l-lg rounded-r-lg bg-secondary flex justify-between items-center">
-                            <Button variant="secondary" className="rounded-l-lg w-10 cursor-pointer hover:bg-product"><Minus/></Button>
-                            <span className="bg-secondary w-full h-10 flex justify-center items-center">1</span>
-                            <Button variant="secondary" className="rounded-r-lg w-10 cursor-pointer hover:bg-product"><Plus/></Button>
-                        </div>
-                        <Button className="bg-chart-3 w-60 h-10 cursor-pointer" onClick={() => setIsModalOpen(true)}><ShoppingCart/>Add to Cart</Button>
+                <div className="flex justify-between items-center h-10 w-100">
+                    <div className="w-30 h-10 border-secondary border-2 rounded-l-lg rounded-r-lg bg-secondary flex justify-between items-center">
+                        <Button disabled={counter == 1} variant="secondary" className="rounded-l-lg w-10 cursor-pointer hover:bg-product" onClick={() => setCounter(counter - 1)}><Minus /></Button>
+                        <span className="bg-secondary w-full h-10 flex justify-center items-center">{counter}</span>
+                        <Button variant="secondary" className="rounded-r-lg w-10 cursor-pointer hover:bg-product" onClick={() => setCounter(counter + 1)}><Plus /></Button>
                     </div>
+                    <Button className="bg-chart-3 w-60 h-10 cursor-pointer" onClick={() => setIsModalOpen(true)}><ShoppingCart />Add to Cart</Button>
+                </div>
             </main>
         </div>
     );

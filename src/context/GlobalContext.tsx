@@ -2,13 +2,12 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import type { GlobalContextType } from "@/utils/type.util";
-import { ModalVariant } from "@/utils/enum.util";
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 export function GlobalProvider({ children }: { children: ReactNode }){
 
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return(
         <GlobalContext.Provider value={{
