@@ -1,0 +1,14 @@
+export type UserDTO = {
+
+    id?: number;
+    name: string;
+    email: string;
+    password: string;
+};
+
+export type UpdateUserDTO = {
+
+    name?: string;
+    email?: string;
+    password?: string;
+};
