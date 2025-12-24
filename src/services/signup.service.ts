@@ -18,16 +18,25 @@ export async function handleForm(e: React.FormEvent, form: UserSignUp, arrayUser
             setModalProps({ phrase: "Email already signed up on the plataform!", modalType: ModalType.ERROR, text: modalTheme.error.text, border: modalTheme.error.border });
         } else {
 
-            const user = await api.post("/user", form);
+            const validEmail = form.email.endsWith("@gmail.com");
 
-            if (!user) {
+            if (validEmail) {
+
+                const user = await api.post("/user", form);
+
+                if (!user) {
+
+                    setIsModalOpen(true);
+                    setModalProps({ phrase: "Failed to sign up user!", modalType: ModalType.ERROR, text: modalTheme.error.text, border: modalTheme.error.border });
+                };
 
                 setIsModalOpen(true);
-                setModalProps({ phrase: "Failed to sign up user!", modalType: ModalType.ERROR, text: modalTheme.error.text, border: modalTheme.error.border });
-            };
+                setModalProps({ phrase: "You have signed up with success!", modalType: ModalType.SUCCESS, text: modalTheme.success.text, border: modalTheme.success.border });
+            } else {
 
-            setIsModalOpen(true);
-            setModalProps({ phrase: "You have signed up with success!", modalType: ModalType.SUCCESS, text: modalTheme.success.text, border: modalTheme.success.border });
+                setIsModalOpen(true);
+                setModalProps({ phrase: "Your email must ends with @gmail.com", modalType: ModalType.ERROR, text: modalTheme.error.text, border: modalTheme.error.border });
+            };
         };
 
     } else {
