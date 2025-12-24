@@ -44,16 +44,16 @@ export default function page() {
                             <div className="h-80 flex flex-col justify-around">
                                 <div>
                                     <Label className="pb-2" htmlFor="name">Name</Label>
-                                    <Input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="What is your name?" id="name" />
+                                    <Input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="What is your name?" id="name" />
                                 </div>
                                 <div>
                                     <Label className="pb-2" htmlFor="email">Email Address</Label>
-                                    <Input value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="youremail@example.com" type="email" id="email" />
+                                    <Input required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="youremail@example.com" type="email" id="email" />
                                 </div>
                                 <div>
                                     <Label className="pb-2" htmlFor="password">Password</Label>
                                     <div className="flex-1 max-w-md relative">
-                                        <Input value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} placeholder="Minimum 7 max 12 caracters" minLength={7} maxLength={12} type={inptPassword.password} className="pr-10 focus-visible:ring-1 focus-visible:ring-4" />
+                                        <Input required value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} placeholder="Minimum 7 max 12 caracters" minLength={7} maxLength={12} type={inptPassword.password} className="pr-10 focus-visible:ring-1 focus-visible:ring-4" />
                                         {inptPassword.password == "password" && <Eye className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" onClick={() => setInptPassword({ ...inptPassword, password: "string" })} />}
                                         {inptPassword.password == "string" && <EyeOff className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" onClick={() => setInptPassword({ ...inptPassword, password: "password" })} />}
                                     </div>
@@ -61,7 +61,7 @@ export default function page() {
                                 <div>
                                     <Label className="pb-2" htmlFor="confirmPassword">Confirm Password</Label>
                                     <div className="flex-1 max-w-md relative">
-                                        <Input value={form.confirmPassword} onChange={e => setForm({ ...form, confirmPassword: e.target.value })} placeholder="Password again" minLength={7} maxLength={12} type={inptPassword.confirmPassword} className="pr-10 focus-visible:ring-1 focus-visible:ring-4" />
+                                        <Input required value={form.confirmPassword} onChange={e => setForm({ ...form, confirmPassword: e.target.value })} placeholder="Password again" minLength={7} maxLength={12} type={inptPassword.confirmPassword} className="pr-10 focus-visible:ring-1 focus-visible:ring-4" />
                                         {inptPassword.confirmPassword == "password" && <Eye className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" onClick={() => setInptPassword({ ...inptPassword, confirmPassword: "string" })} />}
                                         {inptPassword.confirmPassword == "string" && <EyeOff className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" onClick={() => setInptPassword({ ...inptPassword, confirmPassword: "password" })} />}
                                     </div>
