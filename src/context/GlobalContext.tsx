@@ -1,18 +1,29 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import type { GlobalContextType } from "@/utils/type.util";
+import { UserDTO } from "../../types/user.type";
+import { UserService } from "@/services/user.service";
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
 export function GlobalProvider({ children }: { children: ReactNode }){
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [arrayUsers, setArrayUsers] = useState<UserDTO[]>([]);
+
+    useEffect(() => {
+
+        const userService = new UserService();
+        userService.getAllUsers().then(u => setArrayUsers(u));
+    }, []);
 
     return(
         <GlobalContext.Provider value={{
             isModalOpen,
             setIsModalOpen,
+            arrayUsers,
+            setArrayUsers
         }}>{children}</GlobalContext.Provider>
     );
 };

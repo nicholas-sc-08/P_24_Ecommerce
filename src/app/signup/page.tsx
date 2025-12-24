@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useGlobal } from "@/context/GlobalContext";
+import { handleForm } from "@/services/signup.service";
 import { ModalType } from "@/utils/enum.util";
 import { modalTheme } from "@/utils/modal-theme";
 import { Eye, EyeOff, House } from "lucide-react";
@@ -14,12 +16,15 @@ import { useState } from "react";
 export default function page() {
 
     const router = useRouter();
+    const { arrayUsers, setArrayUsers } = useGlobal();
+    const { isModalOpen, setIsModalOpen } = useGlobal();
     const [inptPassword, setInptPassword] = useState({ password: "password", confirmPassword: "password" });
     const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" });
     const [modalProps, setModalProps] = useState({ phrase: "Email already signed up on the plataform!", modalType: ModalType.ERROR, text: modalTheme.error.text, border: modalTheme.error.border });
+
     return (
         <div className="w-screen h-screen flex justify-center items-center">
-            {true && <ModalMessage phrase={modalProps.phrase} modalType={modalProps.modalType} text={modalProps.text} border={modalProps.border} />}
+            {isModalOpen && <ModalMessage phrase={modalProps.phrase} modalType={modalProps.modalType} text={modalProps.text} border={modalProps.border} />}
             <Card className="w-250 h-120 pt-0 pb-0 flex-row items-center">
                 <aside className="w-1/2 h-full bg-cover bg-center rounded-tl-lg rounded-bl-lg" style={{ backgroundImage: "url('/signUpImage.jpg')" }}>
                     <div className="w-full h-full bg-black/30 flex flex-col justify-center items-center rounded-tl-lg rounded-bl-lg">
@@ -35,7 +40,7 @@ export default function page() {
                         </CardAction>
                     </CardHeader>
                     <CardContent className="h-100 w-full">
-                        <form>
+                        <form onSubmit={e => handleForm(e, form, arrayUsers, setModalProps, setIsModalOpen)}>
                             <div className="h-80 flex flex-col justify-around">
                                 <div>
                                     <Label className="pb-2" htmlFor="name">Name</Label>
@@ -63,7 +68,7 @@ export default function page() {
                                 </div>
                             </div>
                             <CardFooter className="h-20 flex flex-col justify-evenly pl-0 pr-0">
-                                <Button className="w-110 cursor-pointer" variant="default">Sign Up</Button>
+                                <Button className="w-110 cursor-pointer" variant="default" type="submit">Sign Up</Button>
                             </CardFooter>
                         </form>
                     </CardContent>
