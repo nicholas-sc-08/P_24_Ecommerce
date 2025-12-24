@@ -2,9 +2,13 @@ import { Search, ShoppingCart, User } from "lucide-react"; // npm install lucide
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ModeToggle from "./theme-button";
 
 export default function Header() {
+
+    const router = useRouter();
+
     return (
         <header className="shadow-[0px_1px_3px_0px_rgba(0,0,0,0.02),0px_0px_0px_1px_rgba(27,31,35,0.15)]">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
@@ -29,7 +33,7 @@ export default function Header() {
                 <div className="flex justify-around w-55">
                     <Button variant="default" className="cursor-pointer"><ShoppingCart/> Cart (0)</Button>
                     <ModeToggle/>
-                    <Button variant="outline" className="cursor-pointer"><User/></Button>
+                    <Button variant="outline" className="cursor-pointer rounded-full w-10 h-10" onClick={() => router.push("/signup")}><User/></Button>
                 </div>
 
             </div>

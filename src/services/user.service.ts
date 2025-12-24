@@ -1,4 +1,4 @@
-import { UpdateUserDTO, UserDTO } from "../../types/user.type";
+import { UpdateUserDTO, UserDTO } from "../utils/user.type";
 import api from "./api";
 
 export class UserService {

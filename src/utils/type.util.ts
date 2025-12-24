@@ -1,5 +1,5 @@
 import React from "react";
-import { UserDTO } from "../../types/user.type";
+import { UserDTO } from "./user.type";
 import { ModalType } from "./enum.util";
 
 export type GlobalContextType = {
@@ -15,4 +15,9 @@ export type ModalMessageInfo = {
     text: string;
     border: string;
     phrase: string;
+};
+
+export type CarouselProps = {
+
+    images: string[]
 };

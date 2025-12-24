@@ -1,5 +1,5 @@
 import React from "react";
-import { UserDTO, UserSignUp } from "../../types/user.type";
+import { UserDTO, UserSignUp } from "../utils/user.type";
 import api from "./api";
 import { modalTheme } from "@/utils/modal-theme";
 import { ModalType } from "@/utils/enum.util";

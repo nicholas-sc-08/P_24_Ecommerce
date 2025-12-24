@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import type { GlobalContextType } from "@/utils/type.util";
-import { UserDTO } from "../../types/user.type";
+import { UserDTO } from "../utils/user.type";
 import { UserService } from "@/services/user.service";
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
