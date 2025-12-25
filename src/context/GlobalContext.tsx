@@ -5,6 +5,7 @@ import type { CardHomeProps, CarouselProps, GlobalContextType } from "@/utils/ty
 import { UserDTO } from "../utils/user.type";
 import { UserService } from "@/services/user.service";
 import { Variants } from "framer-motion";
+import { ProductService } from "@/services/product.service";
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
@@ -12,6 +13,8 @@ export function GlobalProvider({ children }: { children: ReactNode }) {
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [arrayUsers, setArrayUsers] = useState<UserDTO[]>([]);
+    const [arrayProducts, setArrayProducts] = useState<any>([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     const carouselImages: CarouselProps = {
         images: ["/carousel/imageOne.svg", "/carousel/imageTwo.svg", "/carousel/imageThree.svg"]
@@ -73,7 +76,9 @@ export function GlobalProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
 
         const userService = new UserService();
+        const productService = new ProductService();
         userService.getAllUsers().then(u => setArrayUsers(u));
+        productService.getAll().then(p => setArrayProducts(p));
 
     }, []);
 
@@ -83,6 +88,10 @@ export function GlobalProvider({ children }: { children: ReactNode }) {
             setIsModalOpen,
             arrayUsers,
             setArrayUsers,
+            arrayProducts,
+            setArrayProducts,
+            selectedProduct,
+            setSelectedProduct,
             carouselImages,
             cardHomeImages,
             containerVariants,
