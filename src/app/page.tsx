@@ -1,17 +1,31 @@
+"use client";
+
+import CardCTA from "@/components/CardCTA";
 import Carousel from "@/components/Carousel";
 import { Button } from "@/components/ui/button";
-import { CarouselProps } from "@/utils/type.util";
+import { CardHomeProps, CarouselProps } from "@/utils/type.util";
 import Image from "next/image";
+import { AnimatePresence, motion, Variants } from "framer-motion";
+import { useGlobal } from "@/context/GlobalContext";
 
 export default function Home() {
-  
-  const carouselImages: CarouselProps = {
-    images: ["/carousel/imageOne.svg", "/carousel/imageTwo.svg", "/carousel/imageThree.svg"]
-  };
-  
+
+  const { containerVariants, itemVariants, cardHomeImages, carouselImages } = useGlobal();
+
   return (
-    <div className="">
-        <Carousel images={carouselImages.images}/>
-    </div>
+    <AnimatePresence>
+      <motion.div variants={containerVariants} initial="hidden" animate="visible" className="w-full">
+        <motion.div variants={itemVariants} className="w-full h-full flex justify-center">
+          <Carousel images={carouselImages.images} />
+        </motion.div>
+        <div className="w-full h-120 flex items-center justify-around">
+          {cardHomeImages.map((card, i) => (
+            <motion.div key={i} variants={itemVariants}>
+              <CardCTA title={card.title} description={card.description} discount={card.discount} image={card.image} />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }

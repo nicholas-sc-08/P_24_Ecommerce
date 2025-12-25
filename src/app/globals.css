@@ -50,6 +50,25 @@
   --info: #4299E1;
   --info-foreground: #ffffff;
 
+  --beauty-skincare: #E6FFFA;
+  --beauty-skincare-foreground: #2C7A7B;
+
+  /* Makeup */
+  --beauty-makeup: #FFF5F5;
+  --beauty-makeup-foreground: #C53030;
+
+  /* Fragrances */
+  --beauty-fragrance: #FAF5FF;
+  --beauty-fragrance-foreground: #6B46C1;
+
+  /* Hair Care */
+  --beauty-hair: #FFFAF0;
+  --beauty-hair-foreground: #B7791F;
+
+  /* Wellness/Bath */
+  --beauty-wellness: #EBF8FF;
+  --beauty-wellness-foreground: #2B6CB0;
+
   --font-sans: Inter, sans-serif;
   --font-serif: Merriweather, serif;
   --font-mono: JetBrains Mono, monospace;
@@ -114,6 +133,25 @@
   --info: #3182CE;
   --info-foreground: #eff6ff;
 
+  --beauty-skincare: #E6FFFA;
+  --beauty-skincare-foreground: #2C7A7B;
+
+  /* Makeup */
+  --beauty-makeup: #FFF5F5;
+  --beauty-makeup-foreground: #C53030;
+
+  /* Fragrances */
+  --beauty-fragrance: #FAF5FF;
+  --beauty-fragrance-foreground: #6B46C1;
+
+  /* Hair Care */
+  --beauty-hair: #FFFAF0;
+  --beauty-hair-foreground: #B7791F;
+
+  /* Wellness/Bath */
+  --beauty-wellness: #EBF8FF;
+  --beauty-wellness-foreground: #2B6CB0;
+
   --shadow-2xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
   --shadow-xs: 0 1px 3px 0px oklch(0.00 0 0 / 0.05);
   --shadow-sm: 0 1px 3px 0px oklch(0.00 0 0 / 0.10), 0 1px 2px -1px oklch(0.00 0 0 / 0.10);
@@ -170,6 +208,21 @@
 
   --color-info: var(--info);
   --color-info-foreground: var(--info-foreground);
+
+  --color-beauty-skincare: var(--beauty-skincare);
+  --color-beauty-skincare-foreground: var(--beauty-skincare-foreground);
+
+  --color-beauty-makeup: var(--beauty-makeup);
+  --color-beauty-makeup-foreground: var(--beauty-makeup-foreground);
+
+  --color-beauty-fragrance: var(--beauty-fragrance);
+  --color-beauty-fragrance-foreground: var(--beauty-fragrance-foreground);
+
+  --color-beauty-hair: var(--beauty-hair);
+  --color-beauty-hair-foreground: var(--beauty-hair-foreground);
+
+  --color-beauty-wellness: var(--beauty-wellness);
+  --color-beauty-wellness-foreground: var(--beauty-wellness-foreground);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

@@ -1,12 +1,17 @@
 import React from "react";
 import { UserDTO } from "./user.type";
 import { ModalType } from "./enum.util";
+import { Variants } from "framer-motion";
 
 export type GlobalContextType = {
     isModalOpen: boolean;
     setIsModalOpen: (value: boolean) => void;
     arrayUsers: UserDTO[],
-    setArrayUsers: React.Dispatch<React.SetStateAction<any>>
+    setArrayUsers: React.Dispatch<React.SetStateAction<any>>,
+    carouselImages: CarouselProps,
+    cardHomeImages: CardHomeProps[],
+    containerVariants: Variants,
+    itemVariants: Variants
 };
 
 export type ModalMessageInfo = {
@@ -20,4 +25,11 @@ export type ModalMessageInfo = {
 export type CarouselProps = {
 
     images: string[]
+};
+export type CardHomeProps = {
+
+    title: string;
+    description: string;
+    discount: string;
+    image: string;
 };
