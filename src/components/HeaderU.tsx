@@ -12,9 +12,8 @@ export default function Header() {
     return (
         <header className="shadow-[0px_1px_3px_0px_rgba(0,0,0,0.02),0px_0px_0px_1px_rgba(27,31,35,0.15)]">
             <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
-
                 <div>
-                    <span className="text-2xl font-bold text-foreground tracking-tighter">
+                    <span onClick={() => router.push("/")} className="text-2xl font-bold text-foreground tracking-tighter">
                         LOGO<span className="text-primary">.</span>
                     </span>
                 </div>

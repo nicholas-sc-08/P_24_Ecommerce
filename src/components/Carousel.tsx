@@ -13,31 +13,31 @@ export default function Carousel({ images }: CarouselProps) {
     const [current, setCurrent] = useState<number>(0);
     const length: number = images.length;
     const handlers = useSwipeable({
-        onSwipedLeft: () => prevSlide(current, setCurrent, length),
-        onSwipedRight: () => nextSlide(current, setCurrent, length),
+        onSwipedRight: () => prevSlide(current, setCurrent, length),
+        onSwipedLeft: () => nextSlide(current, setCurrent, length),
         preventScrollOnSwipe: true,
         trackMouse: true
     });
 
-     useEffect(() => {
+    useEffect(() => {
 
-         setTimeout(() => setCurrent(current === length - 1 ? 0 : current + 1), 3000);
-     }, [current]);
+        setTimeout(() => setCurrent(current === length - 1 ? 0 : current + 1), 3000);
+    }, [current]);
 
     return (
-        <div className="relative w-full h-150 overflow-hidden" {...handlers}>
+        <div className="relative w-380 h-150 overflow-hidden pt-8" {...handlers}>
             <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${current * 100}%)` }}>
                 {images.map((img, i) => (
-                    <Card key={i} className="pt-0 pb-0 bg-cover flex-shrink-0 w-full h-140 flex justify-center items-center bg-product" style={{ backgroundImage: `url(${img})` }}>
-                        <div className="bg-black/20 object-cover w-full h-full">
+                    <Card key={i} className="pt-0 pb-0 bg-cover flex-shrink-0 w-full h-150 flex justify-center rounded-lg items-center bg-product" style={{ backgroundImage: `url(${img})` }}>
+                        <div className="bg-black/20 object-cover w-full h-full rounded-lg">
                             {current == 0 &&
                                 <div className="w-full h-full flex justify-between items-center">
-                                    <div className="w-1/2 h-full flex flex-col justify-center items-center">
+                                    <div className="w-130 h-full flex flex-col justify-center items-center">
                                         <h1 className="font-semibold text-4xl w-70 text-white">Unlock your Inner Radiance.</h1>
                                         <h2 className="w-70 text-center  text-2xl text-white pt-8 pb-6">Show new Arrivals</h2>
                                         <span className="bg-black/20 p-2 rounded-lg text-center text-white text-2xl">Fair not Fear</span>
                                     </div>
-                                    <div className="w-1/2 h-full flex flex-col justify-center items-center">
+                                    <div className="w-130 h-full flex flex-col justify-center items-center">
                                         <h1 className="font-semibold text-center text-4xl w-70 text-white">GLOW UP!</h1>
                                         <span className="bg-black/20 p-2 mt-5 mb-5 rounded-lg text-center text-white text-2xl">Final days: Up to 20% OFF</span>
                                         <h2 className="w-70 text-center  text-2xl text-white">Self-Care Essencials</h2>
