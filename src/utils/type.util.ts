@@ -8,6 +8,10 @@ export type GlobalContextType = {
     setIsModalOpen: (value: boolean) => void;
     arrayUsers: UserDTO[],
     setArrayUsers: React.Dispatch<React.SetStateAction<any>>,
+    arrayProducts: any,
+    setArrayProducts: React.Dispatch<React.SetStateAction<any>>,
+    selectedProduct: any,
+    setSelectedProduct: React.Dispatch<React.SetStateAction<any>>,
     carouselImages: CarouselProps,
     cardHomeImages: CardHomeProps[],
     containerVariants: Variants,
