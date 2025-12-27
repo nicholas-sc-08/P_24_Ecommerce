@@ -16,7 +16,7 @@ import { AnimatedPrice } from "@/components/AnimatedPrice";
 
 export default function page() {
 
-    const { containerVariants, itemVariants, cardHomeImages, carouselImages } = useGlobal();
+    const { containerVariants, itemVariants } = useGlobal();
     const { selectedProduct, setSelectedProduct } = useGlobal();
     const [productImage, setProductImage] = useState(0);
     const [modalProps, setModalProps] = useState<ModalMessageInfo>({ border: modalTheme.success.border, text: modalTheme.success.text, phrase: "All set! The product has been added to your cart.", modalType: ModalType.SUCCESS });
@@ -24,9 +24,10 @@ export default function page() {
     const [counter, setCounter] = useState(1);
 
     const [price, setPrice] = useState(selectedProduct.variants[0].price);
+    const discount = selectedProduct.variants[0].discount;
     const [discountPrice, setDiscountPrice] = useState(0);
 
-    useEffect(() => setDiscountPrice((price)), [price]);
+    useEffect(() => setDiscountPrice((discount > 0 ? price - ((price * discount) / 100) : price)), [price]);
 
     return (
         <AnimatePresence>
@@ -53,8 +54,12 @@ export default function page() {
                         <h1 className="text-3xl font-semibold leading-tight">{selectedProduct.name}</h1>
                         <div className="flex items-center">
                             <AnimatedPrice price={discountPrice} />
-                            <s className="text-lg text-muted-foreground font-semibold chart-1 mr-3 "><AnimatedPrice price={price} /></s>
-                            <Badge variant="outline" className="bg-red-200 border-0 text-red-600 h-6 ">-40%</Badge>
+                            {discount > 0 &&
+                                <div>
+                                    <s className="text-lg text-muted-foreground font-semibold chart-1 mr-3 "><AnimatedPrice price={price} /></s>
+                                    <Badge variant="outline" className="bg-red-200 border-0 text-red-600 h-6 ">-{selectedProduct.variants[0].discount}%</Badge>
+                                </div>
+                            }
                         </div>
                     </motion.div>
                     <motion.div variants={itemVariants} className="w-200 h-25 pt-3">
@@ -63,21 +68,17 @@ export default function page() {
                     <motion.div variants={itemVariants} className="w-200 h-20 flex flex-col justify-around">
                         <h4>Categories</h4>
                         <div className="w-full h-10 flex items-center">
-                            <motion.div whileHover={{ y: -2, scale: 1.05, filter: "brightness(1.05)" }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                                <Badge variant="outline" className="pt-1 pb-1 pl-2 pr-2 mr-4 bg-beauty-makeup text-beauty-makeup-foreground"><Sparkles />Lip Gloss</Badge>
-                            </motion.div>
-                            <motion.div whileHover={{ y: -2, scale: 1.05, filter: "brightness(1.05)" }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                                <Badge variant="outline" className="pt-1 pb-1 pl-2 pr-2 mr-4 bg-beauty-skincare text-beauty-skincare-foreground"><Droplets />Lip Care</Badge>
-                            </motion.div>
-                            <motion.div whileHover={{ y: -2, scale: 1.05, filter: "brightness(1.05)" }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                                <Badge variant="outline" className="pt-1 pb-1 pl-2 pr-2 mr-4 bg-beauty-hair text-beauty-hair-foreground"><Zap />Honey Infused</Badge>
-                            </motion.div>
+                            {selectedProduct.categories.map((c: any, i: number) => (
+                                <motion.div key={i} whileHover={{ y: -2, scale: 1.05, filter: "brightness(1.05)" }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
+                                    <Badge variant="outline" className={`pt-1 pb-1 pl-2 pr-2 mr-4 bg-${c.bgColor} text-${c.textColor}`}><Sparkles />{c.name}</Badge>
+                                </motion.div>
+                            ))}
                         </div>
                     </motion.div>
                     <motion.div variants={itemVariants} className="w-200 h-25 flex flex-col justify-center">
                         <h4 className="pb-2">Volume</h4>
                         <div className="w-100 flex justify-between">
-                            {selectedProduct.variants.map((v:any, i:number) => (
+                            {selectedProduct.variants.map((v: any, i: number) => (
                                 <motion.div key={i} whileTap={{ scale: 0.95 }} whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
                                     <Button onClick={() => setPrice(v.price)} variant="secondary" className="cursor-pointer hover:bg-chart-1 text-accent-foreground">{v.size}</Button>
                                 </motion.div>

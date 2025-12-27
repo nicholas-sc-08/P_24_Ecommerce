@@ -19,8 +19,8 @@ export default function page() {
                         <CatalogMenu />
                     </div>
                     <div className="w-305">
-                        <motion.div variants={itemVariants} className="mt-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4">
-                            <motion.div variants={itemVariants}>
+                        <motion.div variants={itemVariants}>
+                            <motion.div variants={itemVariants} className="mt-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4">
                                 {arrayProducts.map((p: any, i: number) => (
                                     <div key={i} className="flex justify-center">
                                         <CatalogProduct product={p} />
