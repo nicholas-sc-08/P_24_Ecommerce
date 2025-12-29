@@ -24,10 +24,10 @@ export default function CatalogMenu() {
             </div>
             <div className="flex flex-col justify-evenly w-65 h-30">
                 <h3>Price</h3>
-                <Slider min={0} max={1000} step={1} value={price} onValueChange={e => setPrice(e as [number, number])} />
+                <Slider min={0} max={1000} step={0.01} value={price} onValueChange={e => setPrice(e as [number, number])} />
                 <div className="text-sm w-full flex justify-between">
-                    <span>Min ${price[0]}</span>
-                    <span>Max ${price[1]}</span>
+                    <span>Min ${price[0].toFixed(2)}</span>
+                    <span>Max ${price[1].toFixed(2)}</span>
                 </div>
             </div>
             <div className="flex flex-col justify-evenly w-65 h-30">

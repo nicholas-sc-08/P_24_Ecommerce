@@ -13,6 +13,7 @@ import { ModalMessageInfo } from "@/utils/type.util";
 import { modalTheme } from "@/utils/modal-theme";
 import { AnimatePresence, motion } from "framer-motion";
 import { AnimatedPrice } from "@/components/AnimatedPrice";
+import { iconRender } from "@/services/iconRender.service";
 
 export default function page() {
 
@@ -70,7 +71,7 @@ export default function page() {
                         <div className="w-full h-10 flex items-center">
                             {selectedProduct.categories.map((c: any, i: number) => (
                                 <motion.div key={i} whileHover={{ y: -2, scale: 1.05, filter: "brightness(1.05)" }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>
-                                    <Badge variant="outline" className={`pt-1 pb-1 pl-2 pr-2 mr-4 bg-${c.bgColor} text-${c.textColor}`}><Sparkles />{c.name}</Badge>
+                                    <Badge variant="outline" className={`pt-1 pb-1 pl-2 pr-2 mr-4`} style={{backgroundColor: `var(--${c.bgColor})`, color: `var(--${c.textColor})`}}>{iconRender(c.icon)}{c.name}</Badge>
                                 </motion.div>
                             ))}
                         </div>

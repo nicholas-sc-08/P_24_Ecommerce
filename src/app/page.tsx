@@ -2,10 +2,7 @@
 
 import CardCTA from "@/components/CardCTA";
 import Carousel from "@/components/Carousel";
-import { Button } from "@/components/ui/button";
-import { CardHomeProps, CarouselProps } from "@/utils/type.util";
-import Image from "next/image";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useGlobal } from "@/context/GlobalContext";
 
 export default function Home() {

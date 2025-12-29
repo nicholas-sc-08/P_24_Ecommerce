@@ -9,7 +9,7 @@ export default function CardCTA({ title, description, discount, image }: CardHom
     return (
         <AnimatePresence>
             <motion.div whileHover={{ y: -8, transition: { duration: 0.3 } }}>
-                <Card className="bg-chart-5 w-55 h-80 rounded-2xl hover:bg-chart-4 transition-all duration-300 cursor-pointer dark:bg-chart-3 dark:hover:bg-chart-1">
+                <Card className="bg-chart-5 w-55 h-80 rounded-2xl hover:bg-chart-4 transition-all duration-300 cursor-pointer dark:bg-chart-1 dark:hover:bg-chart-2">
                     <CardHeader>
                         <CardTitle className="text-secondary font-light text-center h-8">{title}</CardTitle>
                         <div className="pt-1">
