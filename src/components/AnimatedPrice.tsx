@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useSpring, useTransform, animate } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, useSpring, useTransform } from "framer-motion";
+import { useEffect } from "react";
 
 export function AnimatedPrice({ price }: { price: number }) {
 
