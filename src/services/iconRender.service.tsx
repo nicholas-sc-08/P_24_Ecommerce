@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, Droplet, Zap, Flower } from "lucide-react";
+import { Sparkles, Droplet, Zap, Flower, Package, UserRound, Tickets, Image } from "lucide-react";
 import React from "react";
 
 export function iconRender(icon: string): React.ReactNode {
@@ -18,6 +18,18 @@ export function iconRender(icon: string): React.ReactNode {
 
         case "Flower":
             return <Flower />;
+
+        case "package":
+            return <Package/>;
+
+        case "userRound":
+            return <UserRound/>;
+
+        case "tickets":
+            return <Tickets/>;
+
+        case "image":
+            return <Image/>;
 
         default:
             return "";

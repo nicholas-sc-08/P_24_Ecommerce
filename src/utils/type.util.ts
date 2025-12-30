@@ -37,3 +37,10 @@ export type CardHomeProps = {
     discount: string;
     image: string;
 };
+
+export type DashboardCardProps = {
+
+    icon: string;
+    array: Array<any>;
+    title: string;
+};
