@@ -28,7 +28,7 @@ export default function page() {
     const discount = selectedProduct.variants[0].discount;
     const [discountPrice, setDiscountPrice] = useState(0);
 
-    useEffect(() => setDiscountPrice((discount > 0 ? price - ((price * discount) / 100) : price)), [price]);
+    useEffect(() => setDiscountPrice((discount > 0 ? (price * counter) - ((price * discount) / 100) : (price * counter))), [price, counter]);
 
     return (
         <AnimatePresence>
@@ -57,7 +57,7 @@ export default function page() {
                             <AnimatedPrice price={discountPrice} />
                             {discount > 0 &&
                                 <div>
-                                    <s className="text-lg text-muted-foreground font-semibold chart-1 mr-3 "><AnimatedPrice price={price} /></s>
+                                    <s className="text-lg text-muted-foreground font-semibold chart-1 mr-3 "><AnimatedPrice price={price * counter} /></s>
                                     <Badge variant="outline" className="bg-red-200 border-0 text-red-600 h-6 ">-{selectedProduct.variants[0].discount}%</Badge>
                                 </div>
                             }
